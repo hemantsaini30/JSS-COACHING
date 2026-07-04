@@ -1,0 +1,19 @@
+const mongoose = require('mongoose');
+
+const questionSchema = new mongoose.Schema({
+  testId: { type: mongoose.Schema.Types.ObjectId, ref: 'Test', required: true },
+  questionText: { type: String, required: true },
+  options: {
+    A: { type: String, required: true },
+    B: { type: String, required: true },
+    C: { type: String, required: true },
+    D: { type: String, required: true },
+  },
+  correctOption: { type: String, enum: ['A', 'B', 'C', 'D'], required: true },
+  explanation: { type: String, default: '' },
+  difficulty: { type: String, enum: ['easy', 'medium', 'hard'], default: 'medium' },
+  marks: { type: Number, default: 1 },
+  order: { type: Number, default: 0 },
+}, { timestamps: true });
+
+module.exports = mongoose.model('Question', questionSchema);
