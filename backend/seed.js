@@ -12,23 +12,13 @@ const seed = async () => {
     await User.deleteMany({});
     console.log('🗑️  Cleared existing users');
 
-    const hashedPassword = await bcrypt.hash('admin123', 10);
+    const hashedPassword = await bcrypt.hash('vermajss06abhay', 10);
 
     await User.create([
       {
-        username: 'admin',
+        username: 'AbhayVerma9818',
         password: hashedPassword,
         role: 'admin',
-      },
-      {
-        username: 'teacher1',
-        password: await bcrypt.hash('teacher123', 10),
-        role: 'teacher',
-      },
-      {
-        username: 'student1',
-        password: await bcrypt.hash('student123', 10),
-        role: 'student',
       },
     ]);
 
@@ -36,9 +26,7 @@ const seed = async () => {
     console.log('');
     console.log('--- Login credentials ---');
     console.log('Admin    → username: admin     | password: admin123');
-    console.log('Teacher  → username: teacher1  | password: teacher123');
-    console.log('Student  → username: student1  | password: student123');
-    console.log('-------------------------');
+    
 
     process.exit(0);
   } catch (error) {
